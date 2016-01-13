@@ -25,10 +25,6 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    // 注销
-    AppDelegate *app = [UIApplication sharedApplication].delegate;
-    [app logout];
-}
+
 
 @end

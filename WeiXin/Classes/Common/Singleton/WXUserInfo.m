@@ -31,5 +31,7 @@ singleton_implementation(WXUserInfo)
     [defaults setBool:self.loginStatus forKey:LoginStatusKey];
     [defaults synchronize];
 }
-
+-(NSString *)jid{
+    return [NSString stringWithFormat:@"%@@%@",self.user,domain];
+}
 @end

@@ -25,6 +25,14 @@ typedef void (^XMPPResultBlock)(XMPPResultType type);
 
 singleton_interface(WXXMPPTool)
 
+@property (nonatomic,strong)XMPPStream *xmppStream;
+///  电子名片
+@property (nonatomic,strong)XMPPvCardTempModule *vCard;
+///  花名册模块
+@property(nonatomic,strong)XMPPRoster *roster;
+///  花名册数据存储
+@property (nonatomic, strong)XMPPRosterCoreDataStorage *rosterStorage;
+
 ///  用户登录
 -(void)xmppUserLogin:(XMPPResultBlock)resultBlock;
 ///  用户注销

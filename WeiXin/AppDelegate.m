@@ -9,11 +9,16 @@
 #import "AppDelegate.h"
 #import "XMPPFramework.h"
 #import "WXNavigationController.h"
+#import "DDLog.h"
+#import "DDTTYLogger.h"
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    // 打开XMPP的日志
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
     
     // 设置导航栏背景
     [WXNavigationController setupNavTheme];

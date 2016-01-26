@@ -8,8 +8,23 @@
 
 #import "WXMeViewController.h"
 #import "AppDelegate.h"
+#import "XMPPvCardTemp.h"
 
 @interface WXMeViewController ()
+
+/**
+ *  头像
+ */
+@property (weak, nonatomic) IBOutlet UIImageView *headerView;
+/**
+ *  昵称
+ */
+@property (weak, nonatomic) IBOutlet UILabel *nickNameLabel;
+
+/**
+ *  微信号
+ */
+@property (weak, nonatomic) IBOutlet UILabel *weixinNumLabel;
 
 @end
 
@@ -21,7 +36,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    // 显示当前用户个人信息
+    
+    //xmpp提供了一个方法，直接获取个人信息
+    XMPPvCardTemp *myVCard=[WXXMPPTool sharedWXXMPPTool].vCard.myvCardTemp;
+    
+    // 设置头像
+    if(myVCard.photo){
+        self.headerView.image=[UIImage imageWithData:myVCard.photo];
+    }
+    
+    // 设置昵称
+    self.nickNameLabel.text=myVCard.nickname;
+    
+    // 设置微信号【用户名】
+    NSString *user=[WXUserInfo sharedWXUserInfo].user;
+    self.weixinNumLabel.text=[NSString stringWithFormat:@"微信号%@",user];
 }
 
 - (void)didReceiveMemoryWarning {
